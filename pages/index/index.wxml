@@ -1,6 +1,39 @@
-<view>首页
-	<text class="iconfont icon-shoucang">
+<view class="pyg_index">
+	<!--搜索框 -->
+	<SearchInput></SearchInput>
+	<!-- 轮播图 -->
+	<view class="index_swiper">
+		<swiper indicator-dots autoplay circular>
+			<swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+				<navigator>
+					<image mode="widthFix" src="{{item.image_src}}" alt="" />
+				</navigator>
+			</swiper-item>
+		</swiper>
+	</view>
+	<!-- 分类导航 -->
+	<view class="index_cate">
+		<navigator wx:for="{{catesList}}" wx:key="name">
+			<image src="{{item.image_src}}" mode="widthFix" />
+		</navigator>
+	</view>
+	<!-- 楼层 -->
+	<view class="index_floor">
+		<view class="floor_group" wx:for="{{floorList}}" wx:for-item="item1" wx:for-index="index1" wx:key="floor_title">
+			<!-- 标题 -->
+			<view class="floor_title">
+				<image src="{{item1.floor_title.image_src}}" mode="widthFix" />
+			</view>
+			<!-- 内容 -->
+			<view class="floor_list">
+				<navigator wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2" wx:key="name">
+					<image src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}" />
+				</navigator>
 
-  </text>
+			</view>
+		</view>
+
+	</view>
+
 
 </view>
