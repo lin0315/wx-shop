@@ -1,1 +1,48 @@
 /* pages/category/index.wxss */
+page {
+  height: 100%;
+}
+.cates {
+  height: 100%;
+}
+.cates .cates_container {
+  display: flex;
+  height: calc(100vh - 90rpx);
+}
+.cates .cates_container .left_mune {
+  flex: 2;
+}
+.cates .cates_container .left_mune .mune_item {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+.cates .cates_container .left_mune .active {
+  color: var(--themeColor);
+  border-left: 5rpx solid currentColor;
+}
+.cates .cates_container .right_content {
+  flex: 5;
+}
+.cates .cates_container .right_content .goods_group .goods_title {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.cates .cates_container .right_content .goods_group .goods_title .delimiter {
+  padding: 0 10rpx;
+  color: #ccc;
+}
+.cates .cates_container .right_content .goods_group .goods_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cates .cates_container .right_content .goods_group .goods_list navigator {
+  width: 33.33%;
+  text-align: center;
+  padding: 8rpx 0;
+}
+.cates .cates_container .right_content .goods_group .goods_list navigator image {
+  width: 50%;
+}
