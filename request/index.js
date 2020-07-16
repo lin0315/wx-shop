@@ -9,7 +9,6 @@ export const request = (params) => {
     mask: true
   })
 
-
   // 定义公共url 
   const baseUrl = "https://api-hmugo-web.itheima.net/api/public/v1";
   return new Promise((resolve, reject) => {
