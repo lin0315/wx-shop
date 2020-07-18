@@ -1,1 +1,82 @@
-/* pages/cart/index.wxss */
+.revice_address_row .address_btn {
+  padding: 20rpx;
+}
+.revice_address_row .address_btn button {
+  font-weight: 500;
+}
+.revice_address_row .user_info_row {
+  display: flex;
+  padding: 20rpx;
+}
+.revice_address_row .user_info_row .user_info {
+  flex: 5;
+}
+.revice_address_row .user_info_row .user_phone {
+  flex: 3;
+  text-align: right;
+}
+.cart_content .cart_title {
+  padding: 20rpx;
+  font-size: 36rpx;
+  border-top: 1rpx solid #FF2D4A;
+  border-bottom: 1rpx solid #FF2D4A;
+}
+.cart_content .cart_main .cart_item {
+  display: flex;
+  padding: 10rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.cart_content .cart_main .cart_item .caer_chk_wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_content .cart_main .cart_item navigator.cart_img_wrap {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_content .cart_main .cart_item navigator.cart_img_wrap image {
+  width: 80%;
+}
+.cart_content .cart_main .cart_item .cart_info_wrap {
+  flex: 4;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.cart_content .cart_main .cart_item .cart_info_wrap .goods_name {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #666;
+}
+.cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .goods_price {
+  font-size: 34rpx;
+  color: var(--themeColor);
+}
+.cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .num_tool {
+  display: flex;
+}
+.cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .num_tool .num_edit {
+  display: flex;
+  width: 55rpx;
+  height: 55rpx;
+  justify-content: center;
+  align-items: center;
+  border: 1rpx solid #ccc;
+}
+.cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .num_tool .goods_num {
+  display: flex;
+  width: 55rpx;
+  height: 55rpx;
+  justify-content: center;
+  align-items: center;
+}

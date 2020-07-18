@@ -1,2 +1,47 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<!-- 收获地址按钮 -->
+<view class="revice_address_row">
+	<view class="address_btn" wx:if="{{!address.userName}}">
+		<button bindtap="handleChooseAddress" type="primary" plain>获取收获地址</button>
+	</view>
+	<!-- 收货信息 -->
+	<view wx:else class="user_info_row">
+		<view class="user_info">
+			<view>收货人:{{address.userName}}</view>
+			<view>{{address.all}}</view>
+		</view>
+		<view class="user_phone">{{address.telNumber}}</view>
+	</view>
+	<!--  -->
+</view>
+
+<!-- 购物车内容 -->
+<view class="cart_content">
+	<view class="cart_title">购物车</view>
+	<!-- 商品 -->
+	<view class="cart_main">
+		<view class="cart_item">
+			<!-- 复选框 -->
+			<view class="caer_chk_wrap">
+				<checkbox-group bindchange="">
+					<checkbox color="#FF2D4A"></checkbox>
+				</checkbox-group>
+			</view>
+			<!-- 图片 -->
+			<navigator class="cart_img_wrap">
+				<image src="http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000160455569_1_400x400.jpg" mode="widthFix" />
+			</navigator>
+			<!-- 信息 -->
+			<view class="cart_info_wrap">
+				<view class="goods_name">海信(Hisense)LED55MU9600X3DUC 55英寸 4K超高清量子点电视 ULED画质 VIDAA系统</view>
+				<view class="goods_price_wrap">
+					<view class="goods_price">￥998</view>
+					<view class="num_tool">
+						<view class="num_edit">-</view>
+						<view class="goods_num">3</view>
+						<view class="num_edit">+</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

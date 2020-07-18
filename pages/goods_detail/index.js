@@ -51,7 +51,6 @@ Page({
 
   // 点击添加购物车事件
   handleCartAdd() {
-    console.log(this.GoodsInfo);
     // 获取缓存中的购物车数据 数组格式
     let cart = wx.getStorageSync('cart') || []
     // 遍历数组判断当前商品是否存在
