@@ -6,7 +6,7 @@
 	<!-- 收货信息 -->
 	<view wx:else class="user_info_row">
 		<view class="user_info">
-			<view>收货人:{{address.userName}}</view>
+			<view>收货人: {{address.userName}}</view>
 			<view>{{address.all}}</view>
 		</view>
 		<view class="user_phone">{{address.telNumber}}</view>
@@ -19,29 +19,50 @@
 	<view class="cart_title">购物车</view>
 	<!-- 商品 -->
 	<view class="cart_main">
-		<view class="cart_item">
+		<view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
 			<!-- 复选框 -->
 			<view class="caer_chk_wrap">
-				<checkbox-group bindchange="">
-					<checkbox color="#FF2D4A"></checkbox>
+				<checkbox-group bindchange="" bindchange="handleItemChange" data-id="{{item.goods_id}}">
+					<checkbox checked="{{item.checked}}" color="#FF2D4A"></checkbox>
 				</checkbox-group>
 			</view>
 			<!-- 图片 -->
 			<navigator class="cart_img_wrap">
-				<image src="http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000160455569_1_400x400.jpg" mode="widthFix" />
+				<image src="{{item.goods_small_logo}}" mode="widthFix" />
 			</navigator>
 			<!-- 信息 -->
 			<view class="cart_info_wrap">
-				<view class="goods_name">海信(Hisense)LED55MU9600X3DUC 55英寸 4K超高清量子点电视 ULED画质 VIDAA系统</view>
+				<view class="goods_name">{{item.goods_name}}</view>
 				<view class="goods_price_wrap">
-					<view class="goods_price">￥998</view>
+					<view class="goods_price">￥{{item.goods_price}}</view>
 					<view class="num_tool">
 						<view class="num_edit">-</view>
-						<view class="goods_num">3</view>
+						<view class="goods_num">{{item.num}}</view>
 						<view class="num_edit">+</view>
 					</view>
 				</view>
 			</view>
 		</view>
 	</view>
+</view>
+
+<!-- 底部结算栏 -->
+<view class="footer_tool">
+	<!-- 全选按钮 -->
+	<view class="all_chk_wrap">
+		<checkbox-group bindchange="">
+			<checkbox checked="{{allChecked}}" color="#F8554F">
+				全选
+			</checkbox>
+		</checkbox-group>
+	</view>
+	<!-- 总价格部分 -->
+	<view class="total_price_wrap">
+		<view class="total_price">
+			合计: <text class="price">￥{{totaPrice}}</text>
+		</view>
+		<view>包含运费</view>
+	</view>
+	<!-- 结算 -->
+	<view class="order_pay_wrap">结算({{totaNum}})</view>
 </view>

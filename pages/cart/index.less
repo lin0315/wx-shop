@@ -1,3 +1,7 @@
+page {
+  padding-bottom: 90rpx;
+}
+
 .revice_address_row {
   .address_btn {
     padding: 20rpx;
@@ -19,6 +23,7 @@
   }
 }
 
+// 中间购物车商品信息
 .cart_content {
   .cart_title {
     padding: 20rpx;
@@ -38,11 +43,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        checkbox-group {
-          checkbox {
-
-          }
-        }
+        
       }
 
       navigator.cart_img_wrap {
@@ -102,5 +103,52 @@
         }
       }
     }
+  }
+}
+
+// 底部结算栏
+.footer_tool {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  background-color: #fff;
+  border-top: 1rpx solid #ccc;
+  .all_chk_wrap {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // checkbox-group {
+    //   checkbox {
+
+    //   }
+    // }
+  }
+
+  .total_price_wrap {
+    flex: 5;
+    padding-right: 15rpx;
+    text-align: right;
+    .total_price {
+      .price {
+        color: var(--themeColor);
+        font-size: 34rpx;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .order_pay_wrap {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--themeColor);
   }
 }
