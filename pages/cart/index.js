@@ -1,6 +1,6 @@
 // pages/cart/index.js
 // 1. 获取用户对小程序的获取地址授权
-import { getSetting, chooseAddress, openSetting } from '../../utils/asyncWx.js';
+import { getSetting, chooseAddress, openSetting, showModal, showToast } from '../../utils/asyncWx.js';
 import regeneratorRuntime from '../../lib/runtime/runtime'
 
 Page({
@@ -91,5 +91,61 @@ Page({
       totaNum
     });
     wx.setStorageSync('cart', cart)
+  },
+
+  // 全选按钮事件
+  handleAllChecked() {
+    // 1 获取cart商品数组 和 allChecked 状态
+    let { cart, allChecked } = this.data
+    // 2 对allChecked状态进行取反
+    allChecked = !allChecked;
+    // 3 遍历cart 修改checked 让其跟全选状态一样
+    cart.forEach(v => v.checked = allChecked)
+    // 将数据保存在 data 和 本地缓存
+    this.setCart(cart)
+  },
+
+  // 商品数量加减按钮 事件
+  async handleItemNumEdit(e) {
+    // 1. 获取传递过来的参数
+    const { operation, id } = e.currentTarget.dataset;
+    // 2 获取商品数组 cart 
+    let { cart } = this.data;
+    // 3 根据id 获取商品索引
+    const index = cart.findIndex(v => v.goods_id === id);
+    // 判断是否删除
+    if (cart[index].num === 1 && operation === -1) {
+      const res = await showModal({ content: "您是否要删除?" })
+      if (res.confirm) {
+        cart.splice(index, 1)
+        this.setCart(cart)
+      }
+
+    } else {
+      // 4 根据索引 修改数组中当前商品的数量
+      cart[index].num += operation;
+      // 5 重新设置回 data 和 本地缓存
+      this.setCart(cart)
+    }
+  },
+
+  // 点击 结算 按钮事件
+  async handlePay() {
+    // 1 获取收获信息 和 结算数量
+    const { address, totaNum } = this.data;
+    // 2 判断是否有地址信息
+    if (!address.userName) {
+      await showToast({ title: '请先获取收获地址' })
+      return;
+    }
+    // 3 判断是否有选中商品
+    if (totaNum === 0) {
+      await showToast({ title: '请选择要购买的商品' })
+      return;
+    }
+    // 4 跳转到支付页面 
+    wx.navigateTo({
+      url: '/pages/pay/index',
+    })
   }
 })

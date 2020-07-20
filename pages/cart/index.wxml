@@ -19,30 +19,39 @@
 	<view class="cart_title">购物车</view>
 	<!-- 商品 -->
 	<view class="cart_main">
-		<view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
-			<!-- 复选框 -->
-			<view class="caer_chk_wrap">
-				<checkbox-group bindchange="" bindchange="handleItemChange" data-id="{{item.goods_id}}">
-					<checkbox checked="{{item.checked}}" color="#FF2D4A"></checkbox>
-				</checkbox-group>
-			</view>
-			<!-- 图片 -->
-			<navigator class="cart_img_wrap">
-				<image src="{{item.goods_small_logo}}" mode="widthFix" />
-			</navigator>
-			<!-- 信息 -->
-			<view class="cart_info_wrap">
-				<view class="goods_name">{{item.goods_name}}</view>
-				<view class="goods_price_wrap">
-					<view class="goods_price">￥{{item.goods_price}}</view>
-					<view class="num_tool">
-						<view class="num_edit">-</view>
-						<view class="goods_num">{{item.num}}</view>
-						<view class="num_edit">+</view>
+		<!-- 购物车有商品时显示 -->
+		<block wx:if="{{cart.length !== 0}}">
+			<view class="cart_item" wx:for="{{cart}}" wx:key="goods_id">
+				<!-- 复选框 -->
+				<view class="caer_chk_wrap">
+					<checkbox-group bindchange="handleItemChange" data-id="{{item.goods_id}}">
+						<checkbox checked="{{item.checked}}" color="#FF2D4A"></checkbox>
+					</checkbox-group>
+				</view>
+				<!-- 图片 -->
+				<navigator class="cart_img_wrap">
+					<image src="{{item.goods_small_logo}}" mode="widthFix" />
+				</navigator>
+				<!-- 信息 -->
+				<view class="cart_info_wrap">
+					<view class="goods_name">{{item.goods_name}}</view>
+					<view class="goods_price_wrap">
+						<view class="goods_price">￥{{item.goods_price}}</view>
+						<view class="num_tool">
+							<view class="num_edit" bindtap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{-1}}">-</view>
+							<view class="goods_num">{{item.num}}</view>
+							<view class="num_edit" bindtap="handleItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{1}}">+</view>
+						</view>
 					</view>
 				</view>
 			</view>
-		</view>
+		</block>
+		<!-- 购物车没商品时显示 -->
+		<block wx:else>
+			<image src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1285087026,2572595179&fm=26&gp=0.jpg" mode="widthFix" />
+
+		</block>
+
 	</view>
 </view>
 
@@ -50,7 +59,7 @@
 <view class="footer_tool">
 	<!-- 全选按钮 -->
 	<view class="all_chk_wrap">
-		<checkbox-group bindchange="">
+		<checkbox-group bindchange="handleAllChecked">
 			<checkbox checked="{{allChecked}}" color="#F8554F">
 				全选
 			</checkbox>
@@ -64,5 +73,5 @@
 		<view>包含运费</view>
 	</view>
 	<!-- 结算 -->
-	<view class="order_pay_wrap">结算({{totaNum}})</view>
+	<view bindtap="handlePay" class="order_pay_wrap">结算({{totaNum}})</view>
 </view>
