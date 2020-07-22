@@ -1,1 +1,9 @@
 /* pages/auth/index.wxss */
+button {
+  margin-top: 30rpx;
+}
+
+.caution {
+  padding: 30rpx;
+  font-size: 50rpx;
+}

@@ -25,13 +25,6 @@ Page({
     this.setCart(cart)
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
   // 点击获取收货地址事件
   async handleChooseAddress() {
     try {
@@ -82,6 +75,7 @@ Page({
         allChecked = false
       }
     })
+    // 判断商品数组是否为空?
     allChecked = cart.length != 0 ? allChecked : false
     // 给data赋值
     this.setData({

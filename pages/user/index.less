@@ -1,0 +1,119 @@
+/* pages/user/index.wxss */
+page {
+  background-color: #edece8;
+}
+.user {
+  position: relative;
+  height: 45vh;
+  overflow: hidden;
+  background-color: var(--themeColor);
+  .user_img {
+    position: relative;
+    .img_bg {
+      width: 110%;
+      height: 50vh;
+      filter: blur(20rpx);
+    }
+    .user_info {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      .user_ico {
+        height: 150rpx;
+        width: 150rpx;
+        border-radius: 50%;
+        
+      }
+      .user_name {
+        margin-top: 40rpx;
+        font-size: 36rpx;
+        color: #fff;
+      }
+    }
+  }
+  .user_btn {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-59%);
+    padding: 30rpx;
+    font-size: 38rpx;
+    border: 1rpx solid greenyellow;
+    color:greenyellow;
+    border-radius: 10rpx;
+  }
+}
+.content {
+  position: relative;
+
+  .user_main {
+    position: absolute;
+    padding-bottom: 40rpx;
+    width: 94vw;
+    top: -40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+
+    .collect {
+      display: flex;
+      padding: 10rpx 0;
+      border-radius: 15rpx;
+      background-color: #fff;
+
+      navigator {
+        flex: 1;
+        text-align: center;
+        font-size: 30rpx;
+        .collect_num {
+          color: var(--themeColor);
+        }
+      }
+    }
+
+    .order {
+      margin: 30rpx 0;
+      background-color: #fff;
+      
+      .order_title {
+        padding: 20rpx;
+        border-bottom: 1px solid #ccc;
+        
+      }
+      .order_content {
+        display: flex;
+        navigator {
+          flex: 1;
+          padding: 15rpx 0;
+          text-align: center;
+          .iconfont {
+            font-size: 40rpx;
+            color: var(--themeColor)
+          }
+        }
+      }
+    }
+    .addres {
+      padding: 20rpx;
+      background-color: #fff;
+    }
+    .app_info {
+      margin: 30rpx 0;
+      background-color: #fff;
+      .app_info_item {
+        padding: 20rpx;
+        border-bottom: 1rpx solid #ccc;
+      }
+      .info_relation {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .recommend {
+      padding: 20rpx;
+      background-color: #fff;
+    }
+  }
+}

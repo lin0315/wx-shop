@@ -92,6 +92,33 @@
 					"pathName": "pages/cart/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "支付页面",
+					"pathName": "pages/pay/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "授权页面",
+					"pathName": "pages/auth/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登入",
+					"pathName": "pages/login/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/user/index",
+					"scene": null
 				}
 			]
 		}

@@ -1,2 +1,10 @@
 <!--pages/auth/index.wxml-->
-<text>pages/auth/index.wxml</text>
+<button type="primary" plain open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">
+	获取授权
+</button>
+<view class="caution">
+	<view>
+		因本账号非企业账号 无法获取token值 支付授权获取不了 所以支付功能无法完善 万分抱歉！！！
+	</view>
+
+</view>
