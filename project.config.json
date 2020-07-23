@@ -118,6 +118,13 @@
 					"id": -1,
 					"name": "个人中心",
 					"pathName": "pages/user/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单页面",
+					"pathName": "pages/order/index",
 					"scene": null
 				}
 			]

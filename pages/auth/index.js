@@ -13,7 +13,7 @@ Page({
       const { code } = await login()
       const loginParams = { encryptedData, rawData, iv, signature, code };
       wx.setStorageSync('loginParams', loginParams)
-      //  3 把token存入缓存 同时返回上一个页面
+      //  3 把loginParams 代替了token存入缓存 同时返回上一个页面 
       wx.navigateBack({
         delta: 1,
         fail: (err) => {

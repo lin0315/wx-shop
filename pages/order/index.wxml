@@ -1,2 +1,39 @@
 <!--pages/order/index.wxml-->
-<text>pages/order/index.wxml</text>
+<Tabs tabs="{{tabs}}" bindtabsItenChange="handletabsItenChange">
+	<!-- 购物车内容 -->
+	<view class="cart_content">
+		<!-- 商品 -->
+		<view class="cart_main">
+			<!-- 购物车商品 -->
+			<view class="cart_item" wx:for="{{orders}}" wx:key="*this">
+				<view class="cart_top">
+					<!-- 图片 -->
+					<navigator class="cart_img_wrap">
+						<image src="{{item.goods_small_logo}}" mode="widthFix" />
+					</navigator>
+					<!-- 信息 -->
+					<view class="cart_info_wrap">
+						<view class="goods_name">{{item.goods_name}}</view>
+						<view class="goods_price_wrap">
+							<view class="goods_price">￥{{item.goods_price}}</view>
+							<view class="num_tool">
+								<view class="goods_num">X {{item.num}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 订单编号 日期 -->
+				<view class="order_bottom">
+					<view class="order_number">
+						<view class="number_title">订单编号</view>
+						<view class="number_value">{{item.order_number}}</view>
+					</view>
+					<view class="order_date">
+						<view class="date_title">订单日期</view>
+						<view class="date_value">{{item.create_time_cn}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</Tabs>

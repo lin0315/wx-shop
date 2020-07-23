@@ -44,7 +44,7 @@ Page({
   async handleOrderPay() {
     try {
 
-      // 1 判断缓存中有没有token 
+      // 1 判断缓存中有没有loginParams 代替 token 
       const loginParams = wx.getStorageSync("loginParams");
       // 2 判断
       if (!loginParams) {
@@ -54,13 +54,22 @@ Page({
         return;
       }
 
-      // 3 将要支付的商品添加到缓存中 手动删除缓存中 已经支付了的商品
+      // 3 将要支付的商品添加到缓存中 手动删除缓存中已经支付了的商品
       let newCart = wx.getStorageSync("cart");
-      let orderCart = wx.getStorageSync("orderCart");
-      let neworderCart = newCart.filter(v => v.checked)
+      //  将要支付购买的商品添加到 订单数组
+      let orders = wx.getStorageSync("orders");
+      let newOrders = newCart.filter(v => v.checked)
+      // 将购买的商品从购物车数组中删除
       newCart = newCart.filter(v => !v.checked);
+
+      const d = new Date()
+      newOrders.forEach(v => {
+        v.create_time = d.getTime()
+      })
+
+      // 更新缓存
       wx.setStorageSync("cart", newCart);
-      wx.setStorageSync("orderCart", [...orderCart, ...neworderCart]);
+      wx.setStorageSync("orders", [...orders, ...newOrders]);
 
       // 4 支付成功了 跳转到订单页面
       wx.navigateTo({
