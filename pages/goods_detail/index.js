@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsObj: {}
+    goodsObj: {},
+    // 商品是否被收藏
+    isCollect: false
   },
   // 商品对象
   GoodsInfo: {},
@@ -17,7 +19,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function () {
+    let pages = getCurrentPages();
+    let currentPages = pages[pages.length - 1];
+    let options = currentPages.options;
     const { goods_id } = options;
     this.getGoddsDestail(goods_id)
 
@@ -27,13 +32,18 @@ Page({
   async getGoddsDestail(goods_id) {
     const goodsObj = await request({ url: '/goods/detail', data: { goods_id } })
     this.GoodsInfo = goodsObj
+    // 1获取缓存中收藏商品的数组
+    let collect = wx.getStorageSync('collect') || [];
+    // 2判断当前商品是否被收藏
+    let isCollect = collect.some(v => v.goods_id === this.GoodsInfo.goods_id)
     this.setData({
       goodsObj: {
         goods_name: goodsObj.goods_name,
         goods_price: goodsObj.goods_price,
         goods_introduce: goodsObj.goods_introduce.replace(/\.webp/g, '.jpg'),
         pics: goodsObj.pics
-      }
+      },
+      isCollect
     })
   },
 
@@ -71,6 +81,41 @@ Page({
       title: '加入成功',
       icon: 'success',
       mask: true
+    })
+  },
+
+  // 点击收藏 事件
+  handleCollect() {
+    let isCollect = false;
+    // 1 获取收藏的商品数组
+    let collect = wx.getStorageSync('collect') || [];
+    // 2 判断当前商品是否在收藏数组中
+    let index = collect.findIndex(v => v.goods_id === this.GoodsInfo.goods_id);
+    // 3 index != 1 表示能找到 有收藏
+    if (index !== -1) {
+      // 收藏数组中删除该商品 即不收藏
+      collect.splice(index, 1);
+      isCollect = false
+      wx.showToast({
+        title: '取消成功',
+        icon: 'success',
+        mask: true
+      })
+    } else {
+      // 收藏
+      collect.push(this.GoodsInfo);
+      isCollect = true;
+      wx.showToast({
+        title: '收藏成功',
+        icon: 'success',
+        mask: true
+      })
+    };
+    // 4 更新缓存
+    wx.setStorageSync('collect', collect)
+    // 5 更新data 中的 isCollect
+    this.setData({
+      isCollect
     })
   }
 })

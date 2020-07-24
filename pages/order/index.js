@@ -57,12 +57,30 @@ Page({
     let orders = wx.getStorageSync('orders')
     orders.forEach(v => v.order_number = 'HMDD2020072300000000' + Math.floor((Math.random() * 9999)));
     this.setData({
-      orders: orders.map(v => ({ ...v, create_time_cn: (new Date(v.create_time * 1000).toLocaleString()) }))
+      orders: orders.map(v => ({ ...v, create_time_cn: (new Date(v.create_time).toLocaleString()) }))
     })
 
   },
 
-  // async getOrders(type) {
+  changTitleByIndex(index) {
+    // 2 获取原数据 进行遍历 修改
+    let { tabs } = this.data
+    tabs.forEach((n, i) => i === index ? n.isActive = true : n.isActive = false);
+    // 3 赋值
+    this.setData({
+      tabs
+    })
+  },
+
+  handletabsItenChange(e) {
+    // 1 获取被点击的索引
+    const { index } = e.detail
+    this.changTitleByIndex(index)
+  },
+})
+
+// 没法获取到token值 该功能无法实现 
+// async getOrders(type) {
   //   const res = await request({ url: '/my/orders/all', data: type })
   //   this.setData({
   //     orders: res.orders
@@ -70,7 +88,6 @@ Page({
 
   // },
 
-  // 没法获取到token值 该功能无法实现 
   // onShow() {
   //   const token = wx.getStorageSync('token')
   //   if (!token) {
@@ -95,20 +112,3 @@ Page({
   //   })
 
   // },
-
-  changTitleByIndex(index) {
-    // 获取原数据 进行遍历
-    let { tabs } = this.data
-    tabs.forEach((n, i) => i === index ? n.isActive = true : n.isActive = false);
-    // 赋值
-    this.setData({
-      tabs
-    })
-  },
-
-  handletabsItenChange(e) {
-    // 获取被点击的索引
-    const { index } = e.detail
-    this.changTitleByIndex(index)
-  },
-})

@@ -38,6 +38,9 @@ page {
   font-size: 30rpx;
   border-left: 1rpx solid #8A8C8A;
 }
+.goods_name_row .goods_collect .icon-shoucang {
+  color: orangered;
+}
 .goods_info .goods_info_title {
   padding: 20rpx;
   font-size: 42rpx;

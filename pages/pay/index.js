@@ -73,7 +73,7 @@ Page({
 
       // 4 支付成功了 跳转到订单页面
       wx.navigateTo({
-        url: '/pages/order/index'
+        url: '/pages/order/index?type=1'
       });
 
     } catch (error) {

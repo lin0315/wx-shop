@@ -1,11 +1,17 @@
 // pages/user/index.js
 Page({
   data: {
-    userinfo: {}
+    userinfo: {},
+    collectNums: 0
   },
 
   onShow() {
     const userinfo = wx.getStorageSync('userinfo')
-    this.setData({ userinfo })
+    // 获取收藏数组
+    const collect = wx.getStorageSync('collect')
+    this.setData({
+      userinfo,
+      collectNums: collect.length
+    })
   }
 })
