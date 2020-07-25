@@ -67,7 +67,7 @@
 				<text>联系客服</text>
 				<text>400-618-4000</text>
 			</view>
-			<view class="app_info_item">意见反馈</view>
+			<navigator class="app_info_item" url="/pages/feedback/index">意见反馈</navigator>
 			<view class="app_info_item">关于我们</view>
 		</view>
 		<view class="recommend">把应用推荐给其他人</view>

@@ -1,2 +1,37 @@
-<!--pages/feedback/index.wxml-->
-<text>pages/feedback/index.wxml</text>
+<SearchInput></SearchInput>
+<Tabs tabs="{{tabs}}" bindtabsItenChange="handletabsItenChange">
+	<view class="fb_main">
+		<view class="fb_title">问题的种类</view>
+		<view class="fb_item">
+			<text>功能建议</text>
+			<text>功能建议</text>
+			<text>功能建议</text>
+			<text>功能建议</text>
+		</view>
+		<view class="fb_content">
+			<!-- 文本 -->
+			<textarea placeholder="请描述一下您的问题"></textarea>
+			<!-- 选择上传图片区域 -->
+			<view class="fb_tool">
+				<button>+</button>
+				<view class="image_item">
+					<UpImg></UpImg>
+				</view>
+				<view class="image_item">
+					<UpImg></UpImg>
+				</view>
+				<view class="image_item">
+					<UpImg></UpImg>
+				</view>
+			</view>
+		</view>
+		<!-- 按钮 -->
+		<view class="fb_btn">
+			<button type="primary">
+				<icon type="success_no_circle" size="23" color="white">
+				</icon>
+				提交
+			</button>
+		</view>
+	</view>
+</Tabs>

@@ -1,11 +1,9 @@
 <!-- 搜索框及按钮 -->
 <view class="search_row">
-	<input placeholder="请输入您要搜索的商品"></input>
-	<button class="search_button">取消</button>
+	<input value="{{inpValue}}" placeholder="请输入您要搜索的商品" bindinput="handleInput"></input>
+	<button bindtap="handleCancel" hidden="{{!isFocus}}" class="search_button">取消</button>
 </view>
 <!-- 推荐内容 -->
 <view class="search_content">
-	<view class="search_item">哈喽你好啊 欢迎来到小程序 很高兴认识你哈喽你好啊 欢迎来到小程序 很高兴认识你哈喽你好啊 欢迎来到小程序 很高兴认识你 </view>
-	<view class="search_item">哈喽你好啊 欢迎来到小程序 很高兴认识你哈喽你好啊 欢迎来到小程序 很高兴认识你哈喽你好啊 欢迎来到小程序 很高兴认识你 </view>
-	<view class="search_item">哈喽你好啊 欢迎来到小程序 很高兴认识你哈喽你好啊 欢迎来到小程序 很高兴认识你哈喽你好啊 欢迎来到小程序 很高兴认识你 </view>
+	<navigator class="search_item" wx:for="{{goods}}" wx:key="goods_id" url="/pages/goods_detail/index?goods_id={{item.goods_id}}">{{item.goods_name}}</navigator>
 </view>
