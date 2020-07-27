@@ -117,5 +117,15 @@ Page({
     this.setData({
       isCollect
     })
+  },
+
+  // 点击购买 事件
+  handlePurchase() {
+    wx.showToast({
+      title: '抱歉！ 请加入购物车 到购物车下单',
+      icon: 'none',
+      mask: true,
+      duration: 3000
+    })
   }
 })

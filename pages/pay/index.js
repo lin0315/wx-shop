@@ -72,9 +72,20 @@ Page({
       wx.setStorageSync("orders", [...orders, ...newOrders]);
 
       // 4 支付成功了 跳转到订单页面
-      wx.navigateTo({
-        url: '/pages/order/index?type=1'
-      });
+      wx.showLoading({
+        title: '支付中',
+        mask: true
+      })
+
+      setTimeout(function () {
+        wx.hideLoading()
+        wx.redirectTo({
+          url: '/pages/order/index?type=1'
+        });
+      }, 700)
+
+
+
 
     } catch (error) {
       await showToast({ title: "支付失败" })

@@ -10,24 +10,18 @@
 		</view>
 		<view class="fb_content">
 			<!-- 文本 -->
-			<textarea placeholder="请描述一下您的问题"></textarea>
+			<textarea placeholder="请描述一下您的问题" bindinput="handleTextInput"></textarea>
 			<!-- 选择上传图片区域 -->
 			<view class="fb_tool">
-				<button>+</button>
-				<view class="image_item">
-					<UpImg></UpImg>
-				</view>
-				<view class="image_item">
-					<UpImg></UpImg>
-				</view>
-				<view class="image_item">
-					<UpImg></UpImg>
+				<button bindtap="handleChooseImg">+</button>
+				<view class="image_item" wx:for="{{chooseImgs}}" wx:key="*this" bindtap="handleRemoveImg" data-index="{{index}}">
+					<UpImg src="{{item}}"></UpImg>
 				</view>
 			</view>
 		</view>
 		<!-- 按钮 -->
 		<view class="fb_btn">
-			<button type="primary">
+			<button type="primary" bindtap="handleFormSubmit">
 				<icon type="success_no_circle" size="23" color="white">
 				</icon>
 				提交

@@ -54,10 +54,10 @@ Page({
     // this.getOrders(type)
 
     // 1. 获取订单数组
-    let orders = wx.getStorageSync('orders')
+    let orders = wx.getStorageSync('orders') || [];
     orders.forEach(v => v.order_number = 'HMDD2020072300000000' + Math.floor((Math.random() * 9999)));
     this.setData({
-      orders: orders.map(v => ({ ...v, create_time_cn: (new Date(v.create_time).toLocaleString()) }))
+      orders: orders.map(v => ({ ...v, create_time_cn: (new Date(v.create_time).toLocaleString()) })).reverse()
     })
 
   },

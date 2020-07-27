@@ -44,5 +44,5 @@
 
 	<view bindtap="handleCartAdd" class="tool_item btn_cart">加入购物车</view>
 
-	<view class="tool_item btn_buy">立即购买</view>
+	<view class="tool_item btn_buy" bindtap="handlePurchase">立即购买</view>
 </view>

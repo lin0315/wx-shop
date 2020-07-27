@@ -84,14 +84,14 @@ page {
   align-items: center;
 }
 .footer_tool {
-  position: absolute;
+  position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: 0rpx;
   width: 100%;
   height: 90rpx;
   display: flex;
   background-color: #fff;
-  border-top: 1rpx solid #ccc;
+  border-top: 1rpx solid #f0e9e9;
 }
 .footer_tool .all_chk_wrap {
   flex: 2;

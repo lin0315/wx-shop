@@ -1,5 +1,5 @@
 <view class="up_img">
-	<image src="https://yanxuan.nosdn.127.net/630c500af570d8e82e6115119ab108e5.jpg" />
+	<image src="{{src}}" />
 	<icon type="clear" size="23" color="red">
 	</icon>
 </view>

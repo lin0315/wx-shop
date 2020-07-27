@@ -11,6 +11,6 @@
 }
 .up_img icon {
   position: absolute;
-  top: -22rpx;
-  right: -22rpx;
+  top: -27rpx;
+  right: -27rpx;
 }
