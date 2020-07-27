@@ -40,7 +40,6 @@ Page({
   // 请求数据
   async qsearch(query) {
     const res = await request({ url: '/goods/search', data: { query } })
-    console.log(res.goods);
     this.setData({
       goods: res.goods
     })
